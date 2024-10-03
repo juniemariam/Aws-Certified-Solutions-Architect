@@ -1,0 +1,59 @@
+﻿1. What are the advantages of cloud computing?  
+  
+Answer:    
+* Cost Efficiency: Cloud computing eliminates the need for large capital investments in hardware and software, allowing you to pay only for the resources you use.  
+* Scalability: Easily scale resources up or down based on demand, without the need for physical hardware adjustments.  
+* Flexibility: You can access resources and services from anywhere if you have an internet connection, making remote work and collaboration easy.  
+* Disaster Recovery: Cloud providers offer built-in disaster recovery solutions, reducing downtime and ensuring business continuity.  
+* Security: Major cloud providers offer advanced security features and compliance certifications, often surpassing what smaller companies could achieve on their own.  
+   
+2. Why did we set up sso instead of using access keys?  
+Answer:   
+* Improved Security: Access keys are like passwords—they can be stolen or leaked, and once someone has them, they can access your systems without restrictions. SSO, however, uses more secure methods, like multi-factor authentication (MFA), which makes it much harder for unauthorized people to get in. 
+* Easier Management: With SSO, you can control everyone’s access from one place. If someone leaves the company or changes roles, you can quickly adjust their permissions or lock them out entirely, all from a central dashboard. This is simpler than trying to keep track of individual access keys for every user. 
+* Less Hassle with Credentials: Access keys need to be created, shared, and regularly updated, which can be a pain to manage. SSO eliminates this hassle since there are no static keys to worry about—users just log in with their usual credentials. 
+* Better Compliance and Tracking: SSO makes it easier to see who is accessing what and when, which is important for security audits and staying compliant with regulations. You get a clear trail of activity, so if something goes wrong, it is easier to figure out what happened. 
+* Convenience for Users: SSO allows users to access multiple systems with just one login. This means they do not have to remember different passwords for different systems, making their lives a lot easier. 
+* Scalability: As the company grows, managing access for more users can become a nightmare with access keys. SSO scales effortlessly, making it easy to manage access for large teams without the headaches of dealing with keys. 
+ 
+   
+3. What is IaC?  
+Answer:   
+Infrastructure-as-Code (IaC) is a key practice in DevOps that makes managing and deploying infrastructure more reliable and efficient. Instead of manually setting up servers, networks, and other resources through a GUI or writing shell scripts, IaC uses configuration files to define what the infrastructure should look like. This approach is like how developers write code to build applications, and it allows teams to automate and version-control their infrastructure.  
+Tools like Terraform, Pulumi, AWS CloudFormation, Azure Resource Manager (ARM) templates, and Google Cloud Deployment Manager make sure that every time you create an environment, it is set up the same way, without unexpected differences or errors. This consistency helps reduce mistakes and makes it easier to track changes, ensuring that your infrastructure is stable and predictable.  
+   
+4. Name one advantage of IaC.  
+Answer:   
+Consistency: Infrastructure-as-Code (IaC) guarantees that the same configuration is applied consistently every time, minimizing the risk of human error, and ensuring identical environments. This consistency makes infrastructure management reliable and repeatable, allowing you to easily recreate environments without concerns about discrepancies or mistakes. 
+  
+5. Briefly describe the purposes of the following "blocks" in terraform language: terraform, provider, resource blocks   
+Answer:    
+Terraform Block: This block is where you set up Terraform's own settings, like which versions of providers you need or where to store state files. It is the configuration hub for how Terraform itself operates. 
+Provider Block: This block tells Terraform which cloud provider or service, like AWS or Azure, you want to work with. It includes key details like your login credentials and which region you are operating in. 
+Resource Block: This block is where you define the actual infrastructure components you want Terraform to manage, such as virtual machines or storage buckets. It specifies what the resource is and how it should be configured. 
+ 
+6. What is the importance of aws-nuke? How did you set up aws-nuke?  
+Answer:    
+aws-nuke is the tool that is used to clean out all resources in an AWS account irrespective of the purpose. It is useful for cleaning up remaining resources in test accounts or for ensuring that a certain account has been completely emptied out. Typically, you configure aws-nuke by specifying an AWS account and the resources you want to delete in a configuration file.  
+ 
+Steps for Aws-nuke setup which I performed were:   
+1. Installed aws nuke through brew command   
+2. Created an IAM Test User (for testing nuke) and gave it a few permissions.  
+3. I went to the IAM dashboard and added an alias name for the account. For example: junie-alias-account   
+4. I created a config yaml file for aws nuke. Specified IAM Test user which I want to nuke and the region where I want to nuke the resources.  
+5. Then ran the command   
+$ aws-nuke -c config/nuke-config.yml --profile default --no-dry-run   
+   
+12. (optional) How did you shell into your instance?  
+Answer:    
+1. First, I created a key pair through the amazon console. I also understood while reading amazon documentation you could create a key pair through   
+ssh-keygen -t rsa -f my_key   
+command (I also tested using this command too to create a keypair).  
+
+
+2. After having a key pair, you need to create your ec2 instance. You can create the instance either through terraform or through the amazon console. I tried for my assignment through terraform, where I mentioned in my main.tf file the key which I want to attach for the instance created. You can also attach the instance through the amazon console and attach your key created.  
+3. The last step is to shell into your created EC2 instance. For which I used the command:   
+ssh -i /pathtoyourKey.pem os-you-selected@your-instance-public-dns.
+
+
+4. And voila you have shelled into your instance!
