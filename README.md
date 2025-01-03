@@ -1,6 +1,6 @@
 # **AWS Certified Solutions Architect Practice**
 
-This repository serves as a comprehensive collection of Terraform configurations designed to explore, experiment, and deploy various AWS services. It was created as part of a journey to master cloud technologies while preparing for the **AWS Certified Solutions Architect** certification.
+This repository serves as a comprehensive collection of Terraform configurations designed to explore, experiment, and deploy various AWS services. It was created as part of my coursework for **Cloud Technologies**, with the goal of mastering cloud infrastructure management and preparing for the **AWS Certified Solutions Architect** certification.
 
 ---
 
